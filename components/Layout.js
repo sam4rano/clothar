@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Head from "next/head";
 import Link from 'next/link';
+import { Store } from '../utils/Store';
 
 
 export default function Layout({title, children}){
+
+  const { state, dispatch } = useContext(Store);
+  const {cart} = state;
+
   return (
     <>
       <Head>
@@ -20,6 +25,11 @@ export default function Layout({title, children}){
             <div>
               <Link href="/cart" className="p-2">
                 Cart
+                {cart.cartItems.length > 0 && (
+                  <span className='ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white'>
+                    {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                  </span>
+                )}
               </Link>
               <Link href="/Login" className="p-2">
                 Login
@@ -27,9 +37,9 @@ export default function Layout({title, children}){
             </div>
           </nav>
         </header>
-        <main className='container m-auto mt-4 px-4'>{children}</main>
-        <footer className='flex justify-center items-center h-10 shadow-inner'>
-          <p>Copyright @ 2022 Clothar</p>
+        <main className="container m-auto mt-4 px-4">{children}</main>
+        <footer className="flex justify-center items-center h-10 shadow-inner">
+          <p>Copyright © 2022 Clothar</p>
         </footer>
       </div>
     </>
