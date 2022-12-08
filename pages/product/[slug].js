@@ -11,7 +11,7 @@ const ProductScreen = () => {
   const router = useRouter();
 
 
-  const { query } = useRouter();
+  const { query  } = useRouter();
   const { slug } = query;
   const product = data.products.find((x) => x.slug == slug);
   if (!product) {
@@ -46,6 +46,7 @@ const ProductScreen = () => {
             width={640}
             height={640}
             layout="responsive"
+            className=""
           ></Image>
         </div>
         <div>
@@ -79,7 +80,7 @@ const ProductScreen = () => {
             </button>
           </div>
         </div>
-        
+         
       </div>
     </Layout>
   );
