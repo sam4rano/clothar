@@ -24,7 +24,7 @@ const ProductScreen = () => {
   
 
     if (product.countInStock < quantity) {
-      alert('Product out of stock')
+      alert('Sorry,  Product out of stock')
       return;
     }
 

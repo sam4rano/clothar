@@ -5,6 +5,7 @@ import {XCircleIcon} from '@heroicons/react/outline';
 import Layout from "../components/Layout";
 import { Store } from "../utils/Store";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
 const Cart = () => {
   const { state, dispatch } = useContext(Store);
@@ -17,9 +18,9 @@ const Cart = () => {
     dispatch({type: 'CART_REMOVE_ITEM', payload:item});
   };
 
-  const updateCartHandler = async (item, qty) => {
+  const updateCartHandler =  (item, qty) => {
     const quantity = Number(qty);
-    dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity:1 } });
+    dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity } });
   };
   return (
     <Layout title="Shopping Cart">
@@ -93,7 +94,7 @@ const Cart = () => {
               </li>
               <li>
                 <button
-                  onClick={() => router.push("/shipping")}
+                  onClick={() => router.push("login?redirect=/shipping")}
                   className="primary-button w-full"
                 >
                   Checkout
@@ -107,4 +108,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default dynamic(() => Promise.resolve(Cart), {ssr:false});
