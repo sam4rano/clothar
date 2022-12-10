@@ -66,10 +66,12 @@ const Login = () => {
             id="email"
             autoFocus
           ></input>
-          {errors.email && <div>{errors.email.message}</div>}
+          {errors.email && (
+            <div className="text-red-500">{errors.email.message}</div>
+          )}
         </div>
         <div className="mb-4">
-          <label>Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             className="w-full"
@@ -80,6 +82,9 @@ const Login = () => {
               minLength: { value: 6, message: "password is more than 5 chars" },
             })}
           ></input>
+          {errors.password && (
+            <div className="text-red-500 ">{errors.password.message}</div>
+          )}
         </div>
         <div className="mb-4">
           <button className="primary-button">Login</button>
