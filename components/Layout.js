@@ -3,10 +3,13 @@ import Head from "next/head";
 import Link from 'next/link';
 import { Store } from '../utils/Store';
 import { ToastContainer } from 'react-toastify'
+import { useSession } from 'next-auth/react';
 
 
 
 export default function Layout({title, children}){
+
+  const { status, data: session} = useSession();
 
   const { state} = useContext(Store);
   const {cart} = state;
@@ -39,9 +42,16 @@ export default function Layout({title, children}){
                   </span>
                 )}
               </Link>
-              <Link href="/Login" className="p-2">
-                Login
-              </Link>
+                {status === 'loading' ? (
+                  'loading'
+                  ) : session?.user ? 
+                (
+                  session.user.name
+                ): (
+                  <Link href="/login">
+                    Login
+                  </Link>
+                )}
             </div>
           </nav>
         </header>
