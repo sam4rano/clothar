@@ -48,7 +48,7 @@ const Cart = () => {
                       <Link
                         className="flex items-center"
                         href={`/product/${item.slug}`}
-                      >
+                        legacyBehavior>
                         <Image
                           src={item.image}
                           alt={item.name}
