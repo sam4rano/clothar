@@ -5,7 +5,7 @@ export const Store = createContext();
 
 const initialState = {
     cart: Cookies.get('cart')? JSON.parse(Cookies.get('cart')):
-    {cartItems:[]}
+    { cartItems: [] }
 };
 
 function reducer(state, action) {
@@ -14,13 +14,13 @@ function reducer(state, action) {
             const newItem = action.payload;
             const existItem = state.cart.cartItems.find(
                 (item) => item.slug === newItem.slug
-                );
-                const cartItems = existItem
+            );
+            const cartItems = existItem
                 ? state.cart.cartItems.map((item) =>
-                  item.name === existItem.name ? newItem:item
+                item.name === existItem.name ? newItem : item
                 )
-                :[...state.cart.cartItems, newItem];
-            Cookies.set('cart',JSON.stringify({...state.cart, cartItems}));
+                : [...state.cart.cartItems, newItem];
+            Cookies.set('cart', JSON.stringify({...state.cart, cartItems}));
             return { ...state, cart: {...state.cart, cartItems} };
         }
         case 'CART_REMOVE_ITEM': {

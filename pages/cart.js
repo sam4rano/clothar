@@ -27,7 +27,8 @@ const Cart = () => {
       <h1 className="mb-4 text-xl">Shopping Cart</h1>
       {cartItems.length === 0 ? (
         <div>
-          Cart is empty. <Link href="/">Go shopping</Link>
+          Cart is empty. 
+          <Link href="/" className="pl-sm hover:blue">Go shopping</Link>
         </div>
       ) : (
         <div className="grid md:grid-cols-4 md:gap-5">
@@ -48,7 +49,7 @@ const Cart = () => {
                       <Link
                         className="flex items-center"
                         href={`/product/${item.slug}`}
-                        legacyBehavior>
+                        >
                         <Image
                           src={item.image}
                           alt={item.name}
@@ -81,6 +82,7 @@ const Cart = () => {
                     </td>
                   </tr>
                 ))}
+                
               </tbody>
             </table>
           </div>
@@ -94,7 +96,7 @@ const Cart = () => {
               </li>
               <li>
                 <button
-                  onClick={() => router.push("login?redirect=/shipping")}
+                  onClick={() => router.push('login?redirect=/shipping')}
                   className="primary-button w-full"
                 >
                   Checkout
