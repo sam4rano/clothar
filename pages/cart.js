@@ -10,12 +10,14 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const Cart = () => {
+   const router = useRouter();
+   
   const { state, dispatch } = useContext(Store);
   const {
     cart: { cartItems },
   } = state;
   
-  const router = useRouter();
+ 
   const removeItemHandler = (item) => {
     dispatch({type: 'CART_REMOVE_ITEM', payload:item});
   };
