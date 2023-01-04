@@ -109,13 +109,13 @@ export default function Layout({title, children}){
                     </Menu.Item>
                   )}
                   <Menu.Item>
-                    <a
+                    <Link
                       className="dropdown-link"
                       href="#"
                       onClick={logoutClickHandler}
                     >
                       Logout
-                    </a>
+                    </Link>
                   </Menu.Item>
                 </Menu.Items>
               </Menu>
