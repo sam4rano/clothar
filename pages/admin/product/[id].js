@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -7,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Layout from "../../../components/Layout";
 import { getError } from "../../../utils/error";
+
 function reducer(state, action) {
   switch (action.type) {
     case "FETCH_REQUEST":
