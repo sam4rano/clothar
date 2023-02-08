@@ -7,6 +7,9 @@ import { toast } from "react-toastify";
 import Layout from "../../../components/Layout";
 import { getError } from "../../../utils/error";
 
+
+console.log(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
+
 function reducer(state, action) {
   switch (action.type) {
     case "FETCH_REQUEST":
@@ -78,19 +81,23 @@ export default function AdminProductEditScreen() {
   const router = useRouter();
 
   const uploadHandler = async (e, imageField = "image") => {
-    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/upload`;
     try {
       dispatch({ type: "UPLOAD_REQUEST" });
       const {
-        data: { signature, timestamp },
+        data: { timestamp, signature },
       } = await axios("/api/admin/cloudinary-sign");
+
+      //api_key=281947868523766
+
+      // const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/upload`;
+      const url = `https://api.cloudinary.com/v1_1/clothar/upload?api_key=281947868523766&timestamp=${timestamp}&signature=${signature}`;
 
       const file = e.target.files[0];
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("signature", signature);
-      formData.append("timestamp", timestamp);
-      formData.append("api_key", process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY);
+      // formData.append("signature", signature);
+      // formData.append("timestamp", timestamp);
+      // formData.append("api_key", process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY);
       const { data } = await axios.post(url, formData);
       dispatch({ type: "UPLOAD_SUCCESS" });
       setValue(imageField, data.secure_url);
