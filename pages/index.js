@@ -14,6 +14,7 @@ import Link from "next/link";
 export default function Home({ products, featuredProducts }) {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
+  
 
   const addToCartHandler = async (product) => {
     const existItem = cart.cartItems.find((x) => x.slug === product.slug);
