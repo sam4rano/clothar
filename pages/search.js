@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
@@ -18,11 +19,11 @@ const prices = [
   },
   {
     name: "₦51 to ₦200",
-    value: "51-200",
+    value: "₦51-200",
   },
   {
     name: "₦201 to ₦1000",
-    value: "201-1000",
+    value: "₦201-1000",
   },
 ];
 
