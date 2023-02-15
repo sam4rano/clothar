@@ -29,18 +29,7 @@ export default function Home({ products, featuredProducts }) {
 
   return (
     <Layout title="Home Page">
-      <Carousel showThumbs={false} autoPlay>
-        {featuredProducts.map((product) => (
-          <div key={product._id}>
-            <Link href={`/product/${product.slug}`} passHref>
-              <p className="flex">
-                <img src={product.banner} alt={product.name} />
-              </p>
-            </Link>
-          </div>
-        ))}
-      </Carousel>
-      <h2 className="h2 my-4">Latest Products</h2>
+      
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {products.map((product) => (
           <ProductItem
@@ -50,6 +39,18 @@ export default function Home({ products, featuredProducts }) {
           ></ProductItem>
         ))}
       </div>
+      <Carousel showThumbs={false} autoPlay>
+        {featuredProducts.map((product) => (
+          <div key={product._id}>
+            <Link href={`/product/${product.slug}`} passHref>
+              <div className="flex">
+                <img src={product.banner} alt={product.name} />
+              </div>
+            </Link>
+          </div>
+        ))}
+      </Carousel>
+      <h2 className="h2 my-4">Latest Products</h2>
     </Layout>
   );
 }

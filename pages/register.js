@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-export default function LoginScreen() {
+export default function Login() {
   const { data: session } = useSession();
 
   const router = useRouter();

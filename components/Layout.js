@@ -126,11 +126,9 @@ export default function Layout({ title, children }) {
                   </Menu.Items>
                 </Menu>
               ) : (
-                <div>
                   <Link href="/login" className="p-2">
                     Login
                   </Link>
-                </div>
               )}
             </div>
           </nav>
